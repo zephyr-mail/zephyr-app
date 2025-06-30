@@ -1,0 +1,7 @@
+Aqui irían las features como:
+    - auth (autenticación)
+    - inbox (bandeja de entrada)
+    - compose (redactar correos)
+    - sent (correos enviados)
+    - trash (papelera)
+    - settings (pagina de ajustes)

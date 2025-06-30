@@ -4,7 +4,9 @@ import path from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+  ],
   base: './', // Importante para que Electron cargue los recursos correctamente
   build: {
     outDir: 'dist',
