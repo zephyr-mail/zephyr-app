@@ -1,6 +1,6 @@
-// src/main/index.ts
 import { app, BrowserWindow } from 'electron';
-import path from 'path';
+
+import './ipc/ai.handler.js';
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -9,17 +9,17 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
+    nodeIntegration: true,
+      // contextIsolation: false, <- Expone al renderer todas la variables de preload.ts
+      preload: 'src/main/preload.ts'
     },
   });
 
-  // Cargar la aplicación React en desarrollo o producción
   if (process.env.NODE_ENV === 'development') {
     mainWindow.loadURL('http://localhost:3000');
     mainWindow.webContents.openDevTools();
   } else {
-    mainWindow.loadFile(path.join(__dirname, '../../dist/index.html'));
+    mainWindow.loadFile('dist/index.html');
   }
 
   mainWindow.on('closed', () => {
@@ -29,10 +29,10 @@ function createWindow() {
 
 app.on('ready', createWindow);
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
-});
-
 app.on('activate', () => {
   if (mainWindow === null) createWindow();
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit();
 });
