@@ -1,36 +1,30 @@
-import { useState } from 'react';
-
-import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  // Accede a las variables y funciones expuestas por preload.ts
+  const saludo = window.myAPI?.saludo ?? 'Sin saludo';
+  const saluda = window.myAAPI?.saluda ?? 'Sin saludo';
 
+  // Estado para la hora actual
+  const [hora, setHora] = useState(new Date());
+
+  // Efecto para actualizar la hora cada segundo
+  useEffect(() => {
+    const interval = setInterval(() => setHora(new Date()), 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  //Devuelve el contenido del componente
   return (
-    <>
-      <div className="flex flex-row justify-evenly">
-        <a href="https://google.com">
-          <img src={viteLogo} className="h-[6em] p-1.5 will-change-auto transition duration-300" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev">
-          <img src={reactLogo} className="h-[6em] p-1.5 will-change-auto transition duration-300 react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="contenedor">
+      <h1 className="titulo">Saludo:</h1>
+      <p className="saludo">{saludo}</p>
+      <p className="saludo">{saluda()}</p>
+      <h2 className="reloj">Hora actual: {hora.toLocaleTimeString()}</h2>
+    </div>
   );
 }
+
 
 export default App;
