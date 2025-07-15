@@ -19,3 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
 contextBridge.exposeInMainWorld('electronAPI', {
   generateMail: () => { ipcRenderer.invoke('ia:generateMail'); }
 });
+
+contextBridge.exposeInMainWorld('electronAPI', {
+  refresh: () => { ipcRenderer.invoke('mail:refresh'); }
+});
