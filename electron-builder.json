@@ -4,9 +4,7 @@
   "directories": {
     "output": "release"
   },
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "win": {
     "target": "nsis"
   },

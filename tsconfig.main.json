@@ -1,13 +1,11 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "module": "nodenext",
-        "moduleResolution": "nodenext",
-        "outDir": "dist/main",
-        "esModuleInterop": true,
-        "target": "ES2023",
-    },
-    "include": [
-        "src/main/**/*"
-    ]
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "outDir": "dist/main",
+    "esModuleInterop": true,
+    "target": "ES2023"
+  },
+  "include": ["src/main/**/*"]
 }

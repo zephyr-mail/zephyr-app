@@ -1,6 +1,11 @@
 import { app, BrowserWindow } from 'electron';
-
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import './ipc/ai.handler.js';
+
+// Buscar la ruta del archivo actual y el directorio
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -9,9 +14,7 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-    nodeIntegration: true,
-      // contextIsolation: false, <- Expone al renderer todas la variables de preload.ts
-      preload: 'src/main/preload.ts'
+      preload: join(__dirname, 'preload.js'),
     },
   });
 

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const proxy = axios.create({
   baseURL: 'https://hf.luisworks.dev',
@@ -10,4 +10,4 @@ export const proxy = axios.create({
 export const http = axios.create({
   timeout: 20000,
   headers: { 'Content-Type': 'application/json' },
-})
+});

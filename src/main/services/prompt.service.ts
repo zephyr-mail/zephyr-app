@@ -4,13 +4,13 @@ export function generatePrompt(input: any) {
   console.log(store.get('theme'));
 
   return {
-    "messages": [
+    messages: [
       {
-        "role": "user",
-        "content": input
-      }
+        role: 'user',
+        content: input,
+      },
     ],
-    "model": "meta-llama/llama-3.1-8b-instruct",
-    "stream": false
-  }
+    model: 'meta-llama/llama-3.1-8b-instruct',
+    stream: false,
+  };
 }
